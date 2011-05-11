@@ -1,0 +1,171 @@
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: posts: DROP TABLE "posts"[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: no such table: comments: DROP TABLE "comments"[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSQLite3::SQLException: no such table: users: DROP TABLE "users"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "subject" varchar(255), "body" text, "user_id" integer, "denormalized_user_name" varchar(255), "denormalized_user_name_computed_at" datetime, "denormalized_comments_count" integer, "denormalized_comments_count_computed_at" datetime, "denormalized_body_length" integer, "denormalized_body_length_computed_at" datetime, "denormalized_identical_post_count" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "post_id" integer, "body" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [4;36;1mUser Create (0.2ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 3) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_3 FROM "posts" [0m
+  [4;36;1mPost Create (0.1ms)[0m   [0;1mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 0, 3, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 4) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_4 FROM "posts" [0m
+  [4;35;1mPost Create (0.1ms)[0m   [0mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 1, 4, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 5) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_5 FROM "posts" [0m
+  [4;36;1mPost Create (0.2ms)[0m   [0;1mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 2, 5, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 5 AND id != 3) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_5_and_id_3 FROM "posts" [0m
+  [4;36;1mPost Update (1.1ms)[0m   [0;1mUPDATE "posts" SET "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_user_name" = 'Ogden Nash', "denormalized_identical_post_count" = 3, "denormalized_user_name_computed_at" = '2011-05-11 02:53:02', "denormalized_body_length" = 20 WHERE (id = 3) [0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 3) [0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mUser Create (0.2ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mUser Create (0.7ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mUser Create (0.2ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 17) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_17 FROM "posts" [0m
+  [4;35;1mPost Create (0.1ms)[0m   [0mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 3, 17, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('some other guy', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 18 AND id != 4) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_18_and_id_4 FROM "posts" [0m
+  [4;36;1mPost Update (0.1ms)[0m   [0;1mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_user_name" = 'some other guy', "denormalized_identical_post_count" = 4, "denormalized_user_name_computed_at" = '2011-05-11 02:53:02', "user_id" = 18 WHERE "id" = 4[0m
+  [4;35;1mUser Update (0.1ms)[0m   [0mUPDATE "users" SET "updated_at" = '2011-05-11 02:53:02', "name" = 'fred' WHERE "id" = 18[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 18 AND id != 4) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_18_and_id_4 FROM "posts" [0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_user_name" = 'fred', "denormalized_user_name_computed_at" = '2011-05-11 02:53:02' WHERE "id" = 4[0m
+  [4;36;1mPost Update (1.0ms)[0m   [0;1mUPDATE "posts" SET denormalized_user_name = NULL WHERE (id = 4) [0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 4) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 18) [0m
+  [4;35;1mPost Update (0.9ms)[0m   [0mUPDATE "posts" SET denormalized_body_length = NULL WHERE (id = 4) [0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 4) [0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 19) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_19 FROM "posts" [0m
+  [4;35;1mPost Create (0.1ms)[0m   [0mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 4, 19, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 19 AND id != 5) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_19_and_id_5 FROM "posts" [0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_identical_post_count" = 5, "denormalized_user_name_computed_at" = '2011-05-11 02:53:02' WHERE "id" = 5[0m
+  [4;36;1mUser Create (0.2ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE "Dog is Man's best friend" AND body LIKE "He has a tail on one end" AND user_id = 21) AS count_subject_like_dog_is_man_s_best_friend_and_body_like_he_has_a_tail_on_one_end_and_user_id_21 FROM "posts" [0m
+  [4;35;1mPost Create (0.1ms)[0m   [0mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'He has a tail on one end', '2011-05-11 02:53:02', 'Ogden', 0, '2011-05-11 02:53:02', 'Dog is Man''s best friend', 5, 21, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 24)[0m
+  [4;36;1mUser Create (0.2ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 22) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_22 FROM "posts" [0m
+  [4;36;1mPost Create (0.1ms)[0m   [0;1mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 6, 22, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 7) [0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 23) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_23 FROM "posts" [0m
+  [4;36;1mPost Create (0.1ms)[0m   [0;1mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 7, 23, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 8) [0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 24) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_24 FROM "posts" [0m
+  [4;36;1mPost Create (0.1ms)[0m   [0;1mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 8, 24, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 24 AND id != 9) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_24_and_id_9 FROM "posts" [0m
+  [4;36;1mPost Update (0.1ms)[0m   [0;1mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_identical_post_count" = 9, "denormalized_user_name_computed_at" = '2011-05-11 02:53:02' WHERE "id" = 9[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 26) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_26 FROM "posts" [0m
+  [4;36;1mPost Create (0.1ms)[0m   [0;1mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 9, 26, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 26 AND id != 10) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_26_and_id_10 FROM "posts" [0m
+  [4;36;1mPost Update (0.1ms)[0m   [0;1mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_identical_post_count" = 10, "denormalized_comments_count" = 1, "denormalized_comments_count_computed_at" = '2011-05-11 02:53:02' WHERE "id" = 10[0m
+  [4;35;1mComment Create (0.1ms)[0m   [0mINSERT INTO "comments" ("created_at", "body", "updated_at", "post_id") VALUES('2011-05-11 02:53:02', 'yadda', '2011-05-11 02:53:02', 10)[0m
+  [4;36;1mComment Update (0.1ms)[0m   [0;1mUPDATE "comments" SET "updated_at" = '2011-05-11 02:53:02', "body" = 'The dog is man''s best friend.' WHERE "id" = 1[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 27) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_27 FROM "posts" [0m
+  [4;35;1mPost Create (0.1ms)[0m   [0mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 10, 27, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE 'foo' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 27 AND id != 11) AS count_subject_like_foo_and_body_like_parsley_is_gharsley_and_user_id_27_and_id_11 FROM "posts" [0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "subject" = 'foo', "denormalized_identical_post_count" = 11 WHERE "id" = 11[0m
+  [4;36;1mUser Create (0.2ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 28) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_28 FROM "posts" [0m
+  [4;36;1mPost Create (0.2ms)[0m   [0;1mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 11, 28, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 28 AND id != 12) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_28_and_id_12 FROM "posts" [0m
+  [4;36;1mPost Update (0.1ms)[0m   [0;1mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_identical_post_count" = 12, "denormalized_user_name_computed_at" = '2011-05-11 02:53:02', "denormalized_comments_count_computed_at" = '2011-05-11 02:53:02' WHERE "id" = 12[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 29) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_29 FROM "posts" [0m
+  [4;35;1mPost Create (0.1ms)[0m   [0mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 12, 29, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;36;1mUser Create (0.2ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES('Ogden Nash', '2011-05-11 02:53:02', '2011-05-11 02:53:02')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(subject LIKE "Further Reflections on Parsley" AND body LIKE "Parsley
+Is gharsley." AND user_id = 30) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_30 FROM "posts" [0m
+  [4;36;1mPost Create (0.1ms)[0m   [0;1mINSERT INTO "posts" ("created_at", "body", "updated_at", "denormalized_user_name", "denormalized_comments_count", "denormalized_body_length_computed_at", "subject", "denormalized_identical_post_count", "user_id", "denormalized_comments_count_computed_at", "denormalized_user_name_computed_at", "denormalized_body_length") VALUES('2011-05-11 02:53:02', 'Parsley
+Is gharsley.', '2011-05-11 02:53:02', 'Ogden Nash', 0, '2011-05-11 02:53:02', 'Further Reflections on Parsley', 13, 30, '2011-05-11 02:53:02', '2011-05-11 02:53:02', 20)[0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
+  [4;35;1mPost Update (1.1ms)[0m   [0mUPDATE "posts" SET denormalized_user_name = NULL, denormalized_user_name_computed_at = NULL WHERE ("posts"."id" = 14) [0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 14) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 30) [0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT * FROM "comments" WHERE ("comments".post_id = 14) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 30 AND id != 14) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_30_and_id_14 FROM "posts" [0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_user_name" = 'Ogden Nash', "denormalized_identical_post_count" = 14, "denormalized_user_name_computed_at" = '2011-05-11 02:53:02' WHERE "id" = 14[0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
+  [4;35;1mPost Update (1.4ms)[0m   [0mUPDATE "posts" SET denormalized_comments_count = NULL, denormalized_comments_count_computed_at = NULL WHERE ("posts"."id" = 14) [0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 14) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 30) [0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT * FROM "comments" WHERE ("comments".post_id = 14) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 30 AND id != 14) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_30_and_id_14 FROM "posts" [0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_comments_count" = 0, "denormalized_comments_count_computed_at" = '2011-05-11 02:53:02' WHERE "id" = 14[0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
+  [4;35;1mPost Update (1.4ms)[0m   [0mUPDATE "posts" SET denormalized_comments_count = NULL, denormalized_comments_count_computed_at = NULL WHERE ("posts"."id" = 14) [0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE ("posts"."id" = 14) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 30) [0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT * FROM "comments" WHERE ("comments".post_id = 14) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(subject LIKE 'Further Reflections on Parsley' AND body LIKE 'Parsley
+Is gharsley.' AND user_id = 30 AND id != 14) AS count_subject_like_further_reflections_on_parsley_and_body_like_parsley_is_gharsley_and_user_id_30_and_id_14 FROM "posts" [0m
+  [4;35;1mPost Update (0.1ms)[0m   [0mUPDATE "posts" SET "updated_at" = '2011-05-11 02:53:02', "denormalized_body_length_computed_at" = '2011-05-11 02:53:02', "denormalized_comments_count" = 0, "denormalized_comments_count_computed_at" = '2011-05-11 02:53:02' WHERE "id" = 14[0m
+  [4;36;1mPost Load (0.1ms)[0m   [0;1mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
+  [4;35;1mPost Update (1.2ms)[0m   [0mUPDATE "posts" SET denormalized_identical_post_count = NULL WHERE ("posts"."id" = 14) [0m
+  [4;36;1mPost Load (0.2ms)[0m   [0;1mSELECT * FROM "posts" WHERE ("posts"."id" = 14) [0m
+  [4;35;1mPost Load (0.1ms)[0m   [0mSELECT * FROM "posts" WHERE (denormalized_user_name_computed_at IS NULL OR denormalized_comments_count_computed_at IS NULL OR denormalized_body_length_computed_at IS NULL) [0m
